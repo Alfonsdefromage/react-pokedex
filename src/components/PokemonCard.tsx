@@ -1,5 +1,6 @@
 import { IndexedPokemon, ListPokemon } from "../interfaces/pokemon.interface";
 import { Row, Col, Image } from "react-bootstrap";
+import { capitalizeFirstLetter } from "../utils/stringUtils";
 import "./PokemonCard.scss";
 
 interface PokemonCardProps {
@@ -14,7 +15,8 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
       </Col>
       <Col>
         <div className="poke-name">
-          <strong>#{pokemon.pokedexNumber}</strong> {pokemon.name}
+          <strong>#{pokemon.pokedexNumber}</strong>{" "}
+          {capitalizeFirstLetter(pokemon.name)}
         </div>
       </Col>
     </Row>
