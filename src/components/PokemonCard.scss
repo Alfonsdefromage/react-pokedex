@@ -1,0 +1,11 @@
+img {
+  height: 60px;
+  width: 40px;
+}
+
+.poke-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+}
