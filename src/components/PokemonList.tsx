@@ -5,9 +5,10 @@ import "./PokemonList.scss";
 
 interface PokemonListProps {
   pokemon: ListPokemon[];
+  onSelectPokemon: (pokemon: ListPokemon) => void;
 }
 
-const PokemonList = ({ pokemon }: PokemonListProps) => {
+const PokemonList = ({ pokemon, onSelectPokemon }: PokemonListProps) => {
   return (
     <Card
       style={{
@@ -29,7 +30,11 @@ const PokemonList = ({ pokemon }: PokemonListProps) => {
         {pokemon.length > 0
           ? pokemon.map((p) => {
               return (
-                <ListGroup.Item>
+                <ListGroup.Item
+                  key={p.name}
+                  onClick={() => onSelectPokemon(p)}
+                  style={{ cursor: "pointer" }}
+                >
                   <PokemonCard key={p.name} pokemon={p} />
                 </ListGroup.Item>
               );
