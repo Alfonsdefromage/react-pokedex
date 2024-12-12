@@ -1,58 +1,28 @@
 import { DetailPokemon } from "./../interfaces/pokemon.interface";
 import { useEffect, useState } from "react";
-import { DetailPokemon } from "../interfaces/pokemon.interface";
 import { httpClient } from "../api/httpsClient";
 import { POKEMON_API_POKEMON_URL } from "../constants";
 
-interface UsePokemonProps {
-  pokemonName: string | undefined;
-}
-
-const useDetails = ({ pokemonName }: UsePokemonProps) => {
-  const [pokemon, setPokemon] = useState<DetailPokemon | null>(null);
+export const useDetails = () => {
+  const [loadedPokemon, setLoadedPokemon] = useState<DetailPokemon | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState(false);
-  const fetchPokemon = async () => {
+
+  const fetchPokemon = async (pokemonName: string) => {
     if (pokemonName) {
       setIsLoading(true);
       const url = `${POKEMON_API_POKEMON_URL}/${pokemonName}`;
-      const result = await httpsClient.get<DetailPokemon>(url);
+      const result = await httpClient.get<DetailPokemon>(url);
       if (result?.data) {
-        setPokemon(result.data);
+        setLoadedPokemon(result.data);
       }
       setIsLoading(false);
     }
-
-    return {
-      pokemon,
-      isLoading,
-    };
   };
   return {
+    loadedPokemon,
+    isLoading,
     fetchPokemon,
   };
 };
-
-useEffect(() => {
-  if (pokemonName) {
-    fetchPokemon();
-  }
-}, [pokemonName]);
-
-const fetchPokemon = async () => {
-  if (pokemonName) {
-    setIsLoading(true);
-    const url = `${POKEMON_API_POKEMON_URL}/${pokemonName}`;
-    const result = await httpsClient.get<DetailPokemon>(url);
-    if (result?.data) {
-      setPokemon(result.data);
-    }
-    setIsLoading(false);
-  }
-
-  return {
-    pokemon,
-    isLoading,
-  };
-};
-
-export default useDetails;

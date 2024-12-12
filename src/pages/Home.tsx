@@ -3,19 +3,14 @@ import PokemonList from "../components/PokemonList";
 import usePokemon from "../hooks/usePokemon";
 import PokemonDetails from "../components/PokemonDetail";
 import { ListPokemon } from "../interfaces/pokemon.interface";
-import { useState } from "react";
+import { useDetails } from "../hooks/pokeDetails";
 
 function Home() {
   const { pokemon } = usePokemon();
-  const;
-  const [selectedPokemon, setSelectedPokemon] = useState<ListPokemon | null>(
-    null
-  );
-  const [selectedPokemonName, setSelectedPokemonName] = useState<string>("");
+  const { loadedPokemon, fetchPokemon, isLoading } = useDetails();
 
   const handleSelectPokemon = (pokemon: ListPokemon) => {
-    setSelectedPokemon(pokemon);
-    setSelectedPokemonName(pokemon.name);
+    fetchPokemon(pokemon.name);
   };
 
   return (
@@ -25,8 +20,10 @@ function Home() {
           pokemon={pokemon}
           onSelectPokemon={handleSelectPokemon}
         ></PokemonList>
-        {selectedPokemon && (
-          <PokemonDetails pokemon={selectedPokemon}></PokemonDetails>
+        {isLoading ? (
+          <span>Loading...</span>
+        ) : (
+          <PokemonDetails pokemon={loadedPokemon}></PokemonDetails>
         )}
       </div>
     </Container>

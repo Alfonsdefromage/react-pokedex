@@ -1,17 +1,28 @@
 import { Col, Image, Row } from "react-bootstrap";
-import { ListPokemon } from "../interfaces/pokemon.interface";
-import { useParams } from "react-router-dom";
+import { DetailPokemon } from "../interfaces/pokemon.interface";
 
 interface PokemonDetailProps {
-  pokemon: ListPokemon;
+  pokemon: DetailPokemon | null;
 }
 
 const PokemonDetails = ({ pokemon }: PokemonDetailProps) => {
   return (
-    <Row>
-      <Col xs="6">
-        <Image src={pokemon.image} alt={pokemon.name}></Image>
-        {/* <div>{pokemonName}</div> */}
+    <Row xs="12">
+      <Col xs="12">
+        {pokemon ? (
+          <>
+            <Image
+              className="h-12"
+              src={pokemon.sprites.other["official-artwork"].front_default}
+              alt={pokemon.name}
+            ></Image>
+            <span>
+              {pokemon.name} {pokemon.height} cm tall
+            </span>
+          </>
+        ) : (
+          <div></div>
+        )}
       </Col>
     </Row>
   );
