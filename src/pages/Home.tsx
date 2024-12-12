@@ -7,12 +7,15 @@ import { useState } from "react";
 
 function Home() {
   const { pokemon } = usePokemon();
+  const;
   const [selectedPokemon, setSelectedPokemon] = useState<ListPokemon | null>(
     null
   );
+  const [selectedPokemonName, setSelectedPokemonName] = useState<string>("");
 
   const handleSelectPokemon = (pokemon: ListPokemon) => {
     setSelectedPokemon(pokemon);
+    setSelectedPokemonName(pokemon.name);
   };
 
   return (
