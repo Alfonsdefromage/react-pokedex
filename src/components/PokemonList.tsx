@@ -1,4 +1,4 @@
-import { IndexedPokemon, ListPokemon } from "../interfaces/pokemon.interface";
+import { ListPokemon } from "../interfaces/pokemon.interface";
 import PokemonCard from "./PokemonCard";
 import { Card, ListGroup } from "react-bootstrap";
 import "./PokemonList.scss";

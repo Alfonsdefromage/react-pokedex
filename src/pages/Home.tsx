@@ -2,8 +2,9 @@ import { Container } from "@mui/material";
 import PokemonList from "../components/PokemonList";
 import usePokemon from "../hooks/usePokemon";
 import PokemonDetails from "../components/PokemonDetail";
-import { ListPokemon } from "../interfaces/pokemon.interface";
+import { DetailPokemon, ListPokemon } from "../interfaces/pokemon.interface";
 import { useDetails } from "../hooks/pokeDetails";
+import { useDexEntry } from "../hooks/dexEntry";
 
 function Home() {
   const { pokemon } = usePokemon();

@@ -1,5 +1,5 @@
 import { DetailPokemon } from "./../interfaces/pokemon.interface";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { httpClient } from "../api/httpsClient";
 import { POKEMON_API_POKEMON_URL } from "../constants";
 

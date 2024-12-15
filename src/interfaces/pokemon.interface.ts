@@ -58,4 +58,21 @@ export interface DetailPokemon {
     };
   };
   stats: PokemonStat[];
+  cries: {
+    legacy: string;
+  };
+}
+
+interface Language {
+  name: string;
+}
+
+interface Version {
+  name: string;
+}
+
+export interface FlavorTextEntry {
+  flavor_text: string;
+  language: Language;
+  version: Version;
 }
