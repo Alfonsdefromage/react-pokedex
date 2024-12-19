@@ -9,9 +9,12 @@ import { useDexEntry } from "../hooks/dexEntry";
 function Home() {
   const { pokemon } = usePokemon();
   const { loadedPokemon, fetchPokemon, isLoading } = useDetails();
+  const { loadedEntry, fetchDexEntry } = useDexEntry();
 
   const handleSelectPokemon = (pokemon: ListPokemon) => {
     fetchPokemon(pokemon.name);
+    console.log(pokemon.pokedexNumber);
+    fetchDexEntry(pokemon.pokedexNumber);
   };
 
   return (
@@ -24,7 +27,10 @@ function Home() {
         {isLoading ? (
           <span>Loading...</span>
         ) : (
-          <PokemonDetails pokemon={loadedPokemon}></PokemonDetails>
+          <PokemonDetails
+            pokemon={loadedPokemon}
+            entry={loadedEntry}
+          ></PokemonDetails>
         )}
       </div>
     </Container>
