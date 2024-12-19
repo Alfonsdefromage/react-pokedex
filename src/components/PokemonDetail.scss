@@ -1,3 +1,16 @@
+.pokedex-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+}
+
 .poke-sprite {
   background-color: #50514f;
   border-radius: 25px;
@@ -50,4 +63,10 @@
     background-color: black;
     color: white;
   }
+}
+
+.entry-text {
+  padding: 16px;
+  border-radius: 25px;
+  border: 1px solid black;
 }

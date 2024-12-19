@@ -16,6 +16,7 @@ export const useDetails = () => {
       const result = await httpClient.get<DetailPokemon>(url);
       if (result?.data) {
         setLoadedPokemon(result.data);
+        console.log(loadedPokemon);
       }
       setIsLoading(false);
     }

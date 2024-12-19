@@ -22,7 +22,9 @@ export const useDexEntry = () => {
       );
 
       if (flavorTextEntry) {
+        console.log("Flavor text found.");
         setLoadedEntry(flavorTextEntry.flavor_text);
+        console.log(loadedEntry);
       } else {
         console.log("No matching flavor text found.");
       }
