@@ -1,10 +1,11 @@
-import { Col, Image, Row } from "react-bootstrap";
+import { Col, Collapse, Image, Row } from "react-bootstrap";
 import {
   DetailPokemon,
   FlavorTextEntry,
 } from "../interfaces/pokemon.interface";
 import "./PokemonDetail.scss";
 import generic from "../assets/generic-pokemon.png";
+import pokelogo from "../assets/pokemon.png";
 import { playAudio } from "../utils/playAudioUtils";
 import { capitalizeFirstLetter } from "../utils/stringUtils";
 import DexEntry from "./DexEntry";
@@ -16,7 +17,7 @@ interface PokemonDetailProps {
 
 const PokemonDetails = ({ pokemon, entry }: PokemonDetailProps) => {
   return (
-    <Row className="d-flex" xs="12">
+    <Col className="display">
       {pokemon ? (
         <>
           <div className="pokedex-details">
@@ -27,24 +28,23 @@ const PokemonDetails = ({ pokemon, entry }: PokemonDetailProps) => {
                   src={pokemon.sprites.other["official-artwork"].front_default}
                   alt={pokemon.name}
                 ></Image>
-              </div>
-
-              <div className="poke-details">
-                <div>
-                  <img src={generic}></img>
-                  <span># {pokemon.id} </span>
-                  {capitalizeFirstLetter(pokemon.name)}
-                </div>
-                <span>HT {pokemon.height * 10} cm </span>
-                <span>WT {pokemon.weight / 10} kg</span>
-                <div className="poke-cry">
-                  <div
-                    className="cry-btn"
-                    onClick={() => playAudio(pokemon.cries.legacy)}
-                  >
-                    <p>►</p>
+                <div className="poke-details">
+                  <div>
+                    <img src={generic}></img>
+                    <span># {pokemon.id} </span>
+                    {capitalizeFirstLetter(pokemon.name)}
                   </div>
-                  {pokemon.name}'s cry!
+                  <span>HT {pokemon.height * 10} cm </span>
+                  <span>WT {pokemon.weight / 10} kg</span>
+                  <div className="poke-cry">
+                    <div
+                      className="cry-btn"
+                      onClick={() => playAudio(pokemon.cries.legacy)}
+                    >
+                      <p>►</p>
+                    </div>
+                    {pokemon.name}'s cry!
+                  </div>
                 </div>
               </div>
             </div>
@@ -54,9 +54,11 @@ const PokemonDetails = ({ pokemon, entry }: PokemonDetailProps) => {
           </div>
         </>
       ) : (
-        <div></div>
+        <div className="poke-sprite">
+          <Image src={pokelogo} alt="Generic Pokemon"></Image>
+        </div>
       )}
-    </Row>
+    </Col>
   );
 };
 
