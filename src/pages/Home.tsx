@@ -18,7 +18,7 @@ function Home() {
   };
 
   return (
-    <Container>
+    <Container style={{ padding: 0 }}>
       <div className="d-flex">
         <PokemonList
           pokemon={pokemon}
