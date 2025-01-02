@@ -18,22 +18,20 @@ function Home() {
   };
 
   return (
-    <Container style={{ padding: 0 }}>
-      <div className="d-flex">
-        <PokemonList
-          pokemon={pokemon}
-          onSelectPokemon={handleSelectPokemon}
-        ></PokemonList>
-        {isLoading ? (
-          <span>Loading...</span>
-        ) : (
-          <PokemonDetails
-            pokemon={loadedPokemon}
-            entry={loadedEntry}
-          ></PokemonDetails>
-        )}
-      </div>
-    </Container>
+    <div className="d-flex">
+      <PokemonList
+        pokemon={pokemon}
+        onSelectPokemon={handleSelectPokemon}
+      ></PokemonList>
+      {isLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <PokemonDetails
+          pokemon={loadedPokemon}
+          entry={loadedEntry}
+        ></PokemonDetails>
+      )}
+    </div>
   );
 }
 

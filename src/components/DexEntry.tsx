@@ -1,3 +1,4 @@
+import { Row } from "react-bootstrap";
 import { FlavorTextEntry } from "../interfaces/pokemon.interface";
 
 interface DexEntryProps {
